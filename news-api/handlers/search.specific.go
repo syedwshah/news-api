@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+	"time"
 
 	"example.com/news-api/models"
 	"example.com/news-api/utils"
@@ -14,6 +15,15 @@ import (
 
 // Endpoint for finding a news article by title or author
 func SearchSpecificArticles(c *gin.Context) {
+    // Check if the data is already in the cache
+    cachedData, found := utils.Cache.Get(c.Request.RequestURI)
+    if found {
+        fmt.Println("Data retrieved from cache")
+        // Return the cached data as a JSON response
+        c.JSON(http.StatusOK, cachedData)
+        return
+    }
+
     apiKey := utils.APIToken    
     query := c.Param("query")
 
@@ -61,7 +71,9 @@ func SearchSpecificArticles(c *gin.Context) {
         }
     }
 
+    // Store the response in the cache for 5 minutes
+    defer utils.Cache.Set(c.Request.RequestURI, gin.H{"articles": filteredArticles}, 5*time.Minute)
+
     // Return the filtered articles as a JSON response
     c.JSON(http.StatusOK, gin.H{"articles": filteredArticles})
-
 }
