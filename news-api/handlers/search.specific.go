@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 	"time"
 
 	"example.com/news-api/models"
@@ -12,10 +13,10 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
-// Endpoint for fetching news articles by size
-func Articles(c *gin.Context) {
+// Endpoint for finding a news article by title or author
+func SearchSpecificArticles(c *gin.Context) {
     // Check if the data is already in the cache
-    cachedData, found := utils.Cache.Get("articles")
+    cachedData, found := utils.Cache.Get(c.Request.RequestURI)
     if found {
         fmt.Println("Data retrieved from cache")
         // Return the cached data as a JSON response
@@ -23,22 +24,17 @@ func Articles(c *gin.Context) {
         return
     }
 
-    // The data is not in the cache, so fetch it from the API
-    apiKey := utils.APIToken
+    apiKey := utils.APIToken    
+    query := c.Param("query")
 
     client := resty.New()
 
     url := utils.GNewsAPIURL
 
-    size := c.Param("size")
-
-    // Set the API parameters
     params := map[string]string{
-        "q":       "news",
-        "lang":    "en",
-        "country": "us",
-        "max":     size,
-        "token":   apiKey,
+        "q":     query,
+        "lang":  "en",
+        "token": apiKey,
     }
 
     // Send the API request
@@ -66,9 +62,18 @@ func Articles(c *gin.Context) {
         return
     }
 
-    // Store the response in the cache for 5 minutes
-    defer utils.Cache.Set("articles", response, 5*time.Minute)
+    // Filter articles by title or author
+    var filteredArticles []models.Article
+    for _, article := range response.Articles {
+        if strings.Contains(strings.ToLower(article.Title), strings.ToLower(query)) ||
+            strings.Contains(strings.ToLower(article.Source.Name), strings.ToLower(query)) {
+            filteredArticles = append(filteredArticles, article)
+        }
+    }
 
-    // Return the articles as a JSON response
-    c.JSON(http.StatusOK, response)
+    // Store the response in the cache for 5 minutes
+    defer utils.Cache.Set(c.Request.RequestURI, gin.H{"articles": filteredArticles}, 5*time.Minute)
+
+    // Return the filtered articles as a JSON response
+    c.JSON(http.StatusOK, gin.H{"articles": filteredArticles})
 }

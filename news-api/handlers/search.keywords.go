@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 	"time"
 
 	"example.com/news-api/models"
@@ -12,8 +13,8 @@ import (
 	"github.com/go-resty/resty/v2"
 )
 
-// Endpoint for fetching news articles by size
-func Articles(c *gin.Context) {
+// Endpoint for searching by keywords
+func SearchArticlesByKeyword(c *gin.Context) {
     // Check if the data is already in the cache
     cachedData, found := utils.Cache.Get("articles")
     if found {
@@ -23,22 +24,19 @@ func Articles(c *gin.Context) {
         return
     }
 
-    // The data is not in the cache, so fetch it from the API
     apiKey := utils.APIToken
+
+    keywords := c.Param("keywords")
+    keywordArray := strings.Split(keywords, " ")
 
     client := resty.New()
 
     url := utils.GNewsAPIURL
 
-    size := c.Param("size")
-
-    // Set the API parameters
     params := map[string]string{
-        "q":       "news",
-        "lang":    "en",
-        "country": "us",
-        "max":     size,
-        "token":   apiKey,
+        "q":     strings.Join(keywordArray, " OR "),
+        "lang":  "en",
+        "token": apiKey,
     }
 
     // Send the API request
@@ -66,9 +64,21 @@ func Articles(c *gin.Context) {
         return
     }
 
+    // Filter articles by keyword
+    var filteredArticles []models.Article
+    for _, article := range response.Articles {
+        for _, keyword := range keywordArray {
+            if strings.Contains(strings.ToLower(article.Title), strings.ToLower(keyword)) ||
+                strings.Contains(strings.ToLower(article.Description), strings.ToLower(keyword)) {
+                filteredArticles = append(filteredArticles, article)
+                break
+            }
+        }
+    }
+
     // Store the response in the cache for 5 minutes
     defer utils.Cache.Set("articles", response, 5*time.Minute)
 
-    // Return the articles as a JSON response
-    c.JSON(http.StatusOK, response)
+    // Return the filtered articles as a JSON response
+    c.JSON(http.StatusOK, gin.H{"articles": filteredArticles})
 }
