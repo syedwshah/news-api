@@ -14,7 +14,6 @@ import (
 // Endpoint for fetching news articles by size
 func Articles(c *gin.Context) {
 	apiKey := utils.APIToken
-	fmt.Printf("API Key is %v\n",apiKey)
 
 	client := resty.New()
 
