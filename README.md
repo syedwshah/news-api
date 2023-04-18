@@ -5,16 +5,16 @@ GNews API is a simple REST API that wraps the GNews API and returns JSON respons
 ## Table of Contents
 
 1.  [Getting Started](https://github.com/syedwshah/news-api#getting-started)
-2.  [Endpoints]()
-    1.  [/articles]()
-    2.  [/articles/:size]()
-    3.  [/articles/search/:query]()
-    4.  [/articles/keyword/:keywords]()
-3.  [Running Tests]()
-4.  [Setting Up the API Token]()
-5.  [Running the API Locally]()
-6.  [Caching]()
-7.  [Potential Improvements]()
+2.  [Endpoints](https://github.com/syedwshah/news-api#endpoints)
+    1.  [/articles](https://github.com/syedwshah/news-api#articles)
+    2.  [/articles/:size](https://github.com/syedwshah/news-api#articlessize)
+    3.  [/articles/search/:query](https://github.com/syedwshah/news-api#articlessearchquery)
+    4.  [/articles/keyword/:keywords](https://github.com/syedwshah/news-api#articleskeywordkeywords)
+3.  [Running Tests](https://github.com/syedwshah/news-api#running-tests)
+4.  [Setting Up the API Token](https://github.com/syedwshah/news-api#setting-up-the-api-token)
+5.  [Running the API Locally](https://github.com/syedwshah/news-api#running-the-api-locally)
+6.  [Caching](https://github.com/syedwshah/news-api#caching)
+7.  [Potential Improvements](https://github.com/syedwshah/news-api#potential-improvements)
 
 ## Getting Started
 
