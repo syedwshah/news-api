@@ -4,17 +4,17 @@ GNews API is a simple REST API that wraps the GNews API and returns JSON respons
 
 ## Table of Contents
 
-1.  [Getting Started](
-2.  [Endpoints]
-    1.  [/articles]
-    2.  [/articles/:size]
-    3.  [/articles/search/:query]
-    4.  [/articles/keyword/:keywords]
-3.  [Running Tests]
-4.  [Setting Up the API Token]
-5.  [Running the API Locally]
-6.  [Caching]
-7.  [Potential Improvements]
+1.  [Getting Started](https://github.com/syedwshah/news-api#getting-started)
+2.  [Endpoints]()
+    1.  [/articles]()
+    2.  [/articles/:size]()
+    3.  [/articles/search/:query]()
+    4.  [/articles/keyword/:keywords]()
+3.  [Running Tests]()
+4.  [Setting Up the API Token]()
+5.  [Running the API Locally]()
+6.  [Caching]()
+7.  [Potential Improvements]()
 
 ## Getting Started
 
