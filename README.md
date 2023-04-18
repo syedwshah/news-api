@@ -15,6 +15,7 @@ GNews API is a simple REST API that wraps the GNews API and returns JSON respons
 5.  [Running the API Locally](https://github.com/syedwshah/news-api#running-the-api-locally)
 6.  [Caching](https://github.com/syedwshah/news-api#caching)
 7.  [Potential Improvements](https://github.com/syedwshah/news-api#potential-improvements)
+8.  [Manual Testing](https://github.com/syedwshah/news-api#manual-testing)
 
 ## Getting Started
 
@@ -118,3 +119,35 @@ Here are some potential improvements that could be made to the API:
 - Implementing user authentication to allow for personalized news feeds and saved articles
 - Adding support for other news APIs to expand the sources of news articles available
 - Optimizing the caching mechanism to prevent cache stampedes and reduce the amount of memory used by the cache
+
+## Manual Testing
+
+To manually test the API endpoints, you can use `curl` or any other HTTP client tool. Here are some examples:
+
+### Get articles:
+
+bashCopy code
+
+`curl http://localhost:8080/articles  # default to 10 curl http://localhost:8080/articles/5 # get 5 articles`
+
+### Get specific articles
+
+#### Get by title:
+
+perlCopy code
+
+`curl http://localhost:8080/articles/search/"How%20to%20download%20and%20add%20EPUB%20books%20to%20your%20Amazon%20Kindle"`
+
+#### Get by name of source:
+
+perlCopy code
+
+`curl -X GET "http://localhost:8080/articles/search/android%20central"`
+
+#### Get by description keywords:
+
+perlCopy code
+
+`curl -X GET "http://localhost:8080/articles/keyword/how%20to%20download%20and%20add"`
+
+You can use these examples as a starting point and modify them according to your specific testing needs.
