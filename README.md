@@ -4,17 +4,17 @@ GNews API is a simple REST API that wraps the GNews API and returns JSON respons
 
 ## Table of Contents
 
-1.  [Getting Started](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#getting-started)
-2.  [Endpoints](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#endpoints)
-    1.  [/articles](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#articles)
-    2.  [/articles/:size](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#articlessize)
-    3.  [/articles/search/:query](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#articlessearchquery)
-    4.  [/articles/keyword/:keywords](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#articleskeywordkeywords)
-3.  [Running Tests](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#running-tests)
-4.  [Setting Up the API Token](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#setting-up-the-api-token)
-5.  [Running the API Locally](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#running-the-api-locally)
-6.  [Caching](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#caching)
-7.  [Potential Improvements](https://chat.openai.com/c/1ae9c9f1-59da-4f6a-b56e-8f653a08ff8d#potential-improvements)
+1.  [Getting Started](
+2.  [Endpoints]
+    1.  [/articles]
+    2.  [/articles/:size]
+    3.  [/articles/search/:query]
+    4.  [/articles/keyword/:keywords]
+3.  [Running Tests]
+4.  [Setting Up the API Token]
+5.  [Running the API Locally]
+6.  [Caching]
+7.  [Potential Improvements]
 
 ## Getting Started
 
