@@ -122,7 +122,7 @@ Here are some potential improvements that could be made to the API:
 
 ## Manual Testing
 
-To manually test the API endpoints, you can use `curl` or any other HTTP client tool. Here are some examples:
+Make sure the server is running using "go run main.go" in the terminal. To manually test the API endpoints, you can use `curl` or any other HTTP client tool. Here are some examples:
 
 ### Get articles:
 
