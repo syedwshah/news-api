@@ -79,8 +79,6 @@ GNews API is a simple REST API that wraps the GNews API and returns JSON respons
 
 To run the tests, navigate to the root directory of the project and use the following command:
 
-bashCopy code
-
 `go test ./...`
 
 This will run all tests in the project.
@@ -88,8 +86,6 @@ This will run all tests in the project.
 ### Setting Up the API Token
 
 To use the GNews API, you'll need an API token. You can sign up for a free token [here](https://gnews.io/signup). Once you have a token, create a `.env` file in the root directory of your project and add the following line, replacing `<your_token>` with your actual token:
-
-makefileCopy code
 
 `API_KEY=<your_token>`
 
