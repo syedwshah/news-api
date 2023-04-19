@@ -126,27 +126,19 @@ Make sure the server is running using "go run main.go" in the terminal. To manua
 
 ### Get articles:
 
-bashCopy code
-
 `curl http://localhost:8080/articles  # default to 10 curl http://localhost:8080/articles/5 # get 5 articles`
 
 ### Get specific articles
 
 #### Get by title:
 
-perlCopy code
-
 `curl http://localhost:8080/articles/search/"How%20to%20download%20and%20add%20EPUB%20books%20to%20your%20Amazon%20Kindle"`
 
 #### Get by name of source:
 
-perlCopy code
-
 `curl -X GET "http://localhost:8080/articles/search/android%20central"`
 
 #### Get by description keywords:
-
-perlCopy code
 
 `curl -X GET "http://localhost:8080/articles/keyword/how%20to%20download%20and%20add"`
 
