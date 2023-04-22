@@ -20,7 +20,7 @@ GNews API is a simple REST API that wraps the GNews API and returns JSON respons
 ## Getting Started
 
 1.  Clone the repository: `git clone https://github.com/your_username/gnews-api`
-2.  Change directory into the project folder: `cd gnews-api`
+2.  Change directory into the project folder: `cd news-api`
 3.  Install dependencies: `go install`
 4.  Create a .env file with the following contents: `API_KEY=<your_token>`, replacing `<your_token>` with your GNews API token. If you do not have a token, the default token in `handlers/handlers.go` will be used.
 5.  Start the server: `go run main.go`
