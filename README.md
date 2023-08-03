@@ -110,7 +110,6 @@ If you want to clear the cache manually, you can do so by sending a GET request 
 
 Here are some potential improvements that could be made to the API:
 
-- Adding pagination to the `/articles` endpoint to allow for retrieval of more than 10 articles at a time
 - Adding additional query parameters to the `/articles` endpoint, such as sorting by date or relevance
 - Implementing user authentication to allow for personalized news feeds and saved articles
 - Adding support for other news APIs to expand the sources of news articles available
@@ -122,7 +121,9 @@ Make sure the server is running using "go run main.go" in the terminal. To manua
 
 ### Get articles:
 
-`curl http://localhost:8080/articles  # default to 10 curl http://localhost:8080/articles/5 # get 5 articles`
+`curl http://localhost:8080/articles  # default to 10 `
+
+`curl http://localhost:8080/articles/5 # get 5 articles`
 
 ### Get specific articles
 
